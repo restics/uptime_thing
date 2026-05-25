@@ -10,7 +10,7 @@ function App() {
   })
   useEffect(() => {
     const fetchCards = () => {
-      fetch('${import.meta.env.VITE_API_URL}/cards')
+      fetch('/cards')
           .then(res => res.json())
           .then(data => setCards(data))
     }
@@ -23,7 +23,7 @@ function App() {
 
   async function handleSubmit(){
 
-    await fetch('${import.meta.env.VITE_API_URL}/cards/create', {
+    await fetch('/cards/create', {
       method: 'POST', 
       headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function App() {
       body: JSON.stringify(form)
     })
   
-    fetch('${import.meta.env.VITE_API_URL}/cards')
+    fetch('/cards')
         .then(res => res.json())
         .then(data => setCards(data))
   }
